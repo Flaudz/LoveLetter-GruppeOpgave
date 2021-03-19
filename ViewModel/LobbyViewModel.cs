@@ -20,6 +20,8 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             ObservableCollection<Lobby> lobbies = new ObservableCollection<Lobby>();
 
             lobbies.Add(new Lobby { Id = 1, LobbyLeader = new Player(1, "Nicolaj"), Players = new ObservableCollection<Player>{ new Player(1, "Nicolaj"), new Player(2, "Jimmy"), new Player(3, "Christian") }, NumberOfPlayers = 3 });
+
+            Lobbies = lobbies;
         }
 
         public void JoinLobby(Lobby lobby)
