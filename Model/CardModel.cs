@@ -9,10 +9,10 @@ namespace LoveLetter_GruppeOpgave.Model
     {
         private int id;
         private string name;
-        private int numberOfCards;
+        private int numberOfCard;
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
-        public int NumberOfCards { get => numberOfCards; set => numberOfCards = value; }
+        public int NumberOfCard { get => numberOfCard; set => numberOfCard = value; }
     }
 }
