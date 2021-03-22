@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveLetter_GruppeOpgave"
+        xmlns:local1="clr-namespace:LoveLetter_GruppeOpgave.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+        <Window.DataContext>
+            <local1:HomeViewModel/>
+        </Window.DataContext>
     <Grid>
-
+        <ListView ItemsSource="{Binding Lobbies, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn HeaderContainerStyle="{StaticResource ListViewStyle}" DisplayMemberBinding="{Binding NumberOfPlayers}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
