@@ -7,7 +7,6 @@ namespace LoveLetter_GruppeOpgave.Model
 {
     public class Lobby
     {
-        // Hej
         private int id;
         private Player lobbyLeader;
         private int numberOfPlayers;
