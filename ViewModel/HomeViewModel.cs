@@ -16,7 +16,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             set;
         }
 
-        public void GetLobbies()
+        public HomeViewModel()
         {
             ObservableCollection<Lobby> lobbies = new ObservableCollection<Lobby>();
             Player player1 = new Player(1, "Hermione Er LÆKKER");
@@ -27,6 +27,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 
             Lobbies = lobbies;
         }
+
     }
 }
-
