@@ -12,6 +12,7 @@ namespace LoveLetter_GruppeOpgave.Model
         private int numberOfPlayers;
         private ObservableCollection<Player> players;
 
+
         public int Id { get => id; set => id = value; }
         public Player LobbyLeader { get => lobbyLeader; set => lobbyLeader = value; }
         public int NumberOfPlayers { get => numberOfPlayers; set => numberOfPlayers = value; }
