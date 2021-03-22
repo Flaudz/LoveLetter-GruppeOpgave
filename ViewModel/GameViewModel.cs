@@ -9,5 +9,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel
     public class GameViewModel
     {
         private ObservableCollection<Player> players;
+
     }
 }
