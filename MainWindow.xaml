@@ -4,9 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LoveLetter_GruppeOpgave"
+        xmlns:vm ="clr-namespace:LoveLetter_GruppeOpgave.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <vm:HomeViewModel x:Key="homeViewModel"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:HomeViewModel/>
+    </Window.DataContext>
     <Grid>
-
+        <ListView ItemsSource="{Binding Lobbies, UpdateSourceTrigger=PropertyChanged, Mode=OneWay, Source={StaticResource homeViewModel}}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding LobbyLeader.Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Height="30" Content="Click Here to make a new lobby" Command="{Binding Path=AddToLobbiesCommand, Source={StaticResource homeViewModel}}"/>
     </Grid>
 </Window>
