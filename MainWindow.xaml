@@ -11,7 +11,8 @@
     <Window.Resources>
         <local:MainWindowViewModel x:Key="mainWindowViewModel"/>
     </Window.Resources>
-    <Grid>
+    <Grid>    
+        <!--Knappen start spil, som er binded til simpleCommand som har en metode der åbner et nyt vindue-->
         <Button Content = "Start Spil" 
             Command = "{Binding simpleCommand, Source={StaticResource mainWindowViewModel}}" 
             CommandParameter = "startgame"

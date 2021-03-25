@@ -11,18 +11,18 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 {
     public class MainWindowViewModel : Window
     {
-        public SimpleCommand simpleCommand { get; set; }
+        public SimpleCommand simpleCommand { get; set; }  //En del af binding til knappen. Fortsætter i SimpleCommand.cs
         public MainWindowViewModel()
         {
             this.simpleCommand = new SimpleCommand(this);
 
         }
-         public void StartGame()
+         public void StartGame() //Funktionaliteten af knappen. Den åbner et nyt vindue (HomeScreenViews)
         {
             HomeScreenViews homeScreenViews = new HomeScreenViews();
             homeScreenViews.Show();
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Close();
+            /*MainWindow mainWindow = new MainWindow();
+            mainWindow.Close();*/
 
         }
     }

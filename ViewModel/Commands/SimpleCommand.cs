@@ -7,8 +7,8 @@ namespace LoveLetter_GruppeOpgave.ViewModel.Commands
 {
     public class SimpleCommand : ICommand
     {
-        public MainWindowViewModel ViewModel { get; set; }
-        public SimpleCommand(MainWindowViewModel mainWindowViewModel)
+        public MainWindowViewModel ViewModel { get; set; } //Property fra MainWindowViewModel
+        public SimpleCommand(MainWindowViewModel mainWindowViewModel) //Constructor af classen
         {
             this.ViewModel = mainWindowViewModel;
         }
@@ -19,7 +19,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public void Execute(object parameter) //Executer metoden StartGame fra MainWindowViewModel
         {
             this.ViewModel.StartGame();
         }
