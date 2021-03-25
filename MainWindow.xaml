@@ -3,10 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LoveLetter_GruppeOpgave"
+        xmlns:local="clr-namespace:LoveLetter_GruppeOpgave.ViewModel"
+        xmlns:views = "clr-namespace:LoveLetter_GruppeOpgave"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
+    <Window.Resources>
+        <local:MainWindowViewModel x:Key="mainWindowViewModel"/>
+    </Window.Resources>
+    <Grid>
+        <Button Content = "Start Spil" 
+            Command = "{Binding simpleCommand, Source={StaticResource mainWindowViewModel}}" 
+            CommandParameter = "startgame"
+                Height="20" Width="80"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,50"/>
     </Grid>
 </Window>

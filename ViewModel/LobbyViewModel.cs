@@ -8,6 +8,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 {
     public class LobbyViewModel
     {
+
         Player MyPlayerObject = new Player(4, "Nicolai");
         public ObservableCollection<Lobby> Lobbies
         {
