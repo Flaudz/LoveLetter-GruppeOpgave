@@ -15,7 +15,7 @@
     </Window.DataContext>
 
     <Grid>
-        <ListView ItemsSource="{Binding Lobbies, UpdateSourceTrigger=Default, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
+        <ListView ItemsSource="{Binding Lobbies, UpdateSourceTrigger=PropertyChanged, Mode=OneWay, Source={StaticResource homeViewModel}}" HorizontalAlignment="Center" VerticalAlignment="Center"
                   Height="300" Width='200' Margin="0,0,0,40">
             <ListView.View>
                 <GridView>
