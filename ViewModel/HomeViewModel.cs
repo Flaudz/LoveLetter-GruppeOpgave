@@ -46,8 +46,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel
                 Lobbies.Add(newLobby);
             }
 
-            Console.WriteLine("asd");
-
 
             // Her skal vi sætte lobbyen ind i databasen, men da vi ikke har lært om det endnu så har jeg ikke lavet det
         }
