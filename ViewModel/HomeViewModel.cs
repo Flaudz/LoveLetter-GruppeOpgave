@@ -32,6 +32,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 
         public void MakeNewLobby()
         {
+            // Rando934qlmp skal erstattes med det navn som brugeren loggede ind med
             string loggedInName = "Rando934qlmp";
             Player myPlayerObject = new Player(4, loggedInName);
             int indexOfLobby = 55;
