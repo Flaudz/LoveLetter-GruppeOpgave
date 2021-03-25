@@ -38,7 +38,11 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             int indexOfLobby = 55;
             // Her laver vi en ny lobby som også skal ind i databasen
             Lobby newLobby = new Lobby(indexOfLobby, myPlayerObject, 1, new ObservableCollection<Player> { myPlayerObject});
-            Lobbies.Add(newLobby);
+            // Her tjekker vi om den ny lobby allerede findes i Lobbies
+            if (!Lobbies.Contains(newLobby))
+            {
+                Lobbies.Add(newLobby);
+            }
 
             // Her skal vi sætte lobbyen ind i databasen, men da vi ikke har lært om det endnu så har jeg ikke lavet det
         }
