@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 using LoveLetter_GruppeOpgave.Model;
 using LoveLetter_GruppeOpgave.ViewModel;
+using LoveLetter_GruppeOpgave.Views;
 
 namespace LoveLetter_GruppeOpgave.ViewModel
 {
