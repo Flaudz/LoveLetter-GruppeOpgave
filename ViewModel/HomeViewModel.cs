@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿
 using LoveLetter_GruppeOpgave.Model;
 using LoveLetter_GruppeOpgave.ViewModel;
-using LoveLetter_GruppeOpgave.Views;
+using LoveLetter_GruppeOpgave.ViewModel.Commands;
+using System;
+using System.Collections.ObjectModel;
 
 namespace LoveLetter_GruppeOpgave.ViewModel
 {
     public class HomeViewModel
     {
-
+        public AddToLobbiesCommand AddToLobbiesCommand { get; set; }
+        // Constructor tror jeg
         public ObservableCollection<Lobby> Lobbies
         {
             get;
@@ -19,6 +19,8 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 
         public HomeViewModel()
         {
+            AddToLobbiesCommand = new AddToLobbiesCommand(this);
+
             // Databasen skal have all lobbies inde i sig og så skal alle de lobbies vises på homescreen
             ObservableCollection<Lobby> lobbies = new ObservableCollection<Lobby>();
             Player player1 = new Player(1, "Hermione Er LÆKKER");
@@ -43,6 +45,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             {
                 Lobbies.Add(newLobby);
             }
+
 
             // Her skal vi sætte lobbyen ind i databasen, men da vi ikke har lært om det endnu så har jeg ikke lavet det
         }

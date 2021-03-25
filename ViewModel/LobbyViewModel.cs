@@ -16,24 +16,24 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             set;
         }
 
-        public void LoadLobbies()
-        {
-            ObservableCollection<Lobby> lobbies = new ObservableCollection<Lobby>();
+        //public void LoadLobbies()
+        //{
+        //    ObservableCollection<Lobby> lobbies = new ObservableCollection<Lobby>();
 
-            lobbies.Add(new Lobby { Id = 1, LobbyLeader = new Player(1, "Nicolaj"), Players = new ObservableCollection<Player>{ new Player(1, "Nicolaj"), new Player(2, "Jimmy"), new Player(3, "Christian") }, NumberOfPlayers = 3 });
-        }
+        //    lobbies.Add(new Lobby(1, new Player(1, "Nicolaj"), Players = new ObservableCollection<Player>{ new Player(1, "Nicolaj"), new Player(2, "Jimmy"), new Player(3, "Christian") }, NumberOfPlayers = 3 });
+        //}
 
-        public void JoinLobby(Lobby lobby)
-        {
-            lobby.NumberOfPlayers++;
-            lobby.Players.Add(MyPlayerObject);
-        }
+        //public void JoinLobby(Lobby lobby)
+        //{
+        //    lobby.NumberOfPlayers++;
+        //    lobby.Players.Add(MyPlayerObject);
+        //}
 
-        public void LeaveLobby(Lobby lobby)
-        {
-            lobby.NumberOfPlayers--;
-            lobby.Players.Remove(MyPlayerObject);
-        }
+        //public void LeaveLobby(Lobby lobby)
+        //{
+        //    lobby.NumberOfPlayers--;
+        //    lobby.Players.Remove(MyPlayerObject);
+        //}
 
     }
 }

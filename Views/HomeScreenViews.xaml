@@ -7,6 +7,9 @@
              mc:Ignorable="d"
         Title="HomeScreenViews" Height="450" Width="800">
 
+    <Window.Resources>
+        <local:HomeViewModel x:Key="homeViewModel"/>
+    </Window.Resources>
     <Window.DataContext>
         <local:HomeViewModel/>
     </Window.DataContext>
@@ -32,7 +35,7 @@
 
 
         <Button x:Name="JoinLobbybtn" Content="Join Lobby" HorizontalAlignment="Center" Margin="0,371,0,0" VerticalAlignment="Top" FontSize="16" Width="100"/>
-        <Button Content="Create Lobby" HorizontalAlignment="Left" Margin="64,202,0,0" VerticalAlignment="Top" FontSize="24" Width="165"/>
+        <Button Content="Create Lobby" HorizontalAlignment="Left" Margin="64,202,0,0" VerticalAlignment="Top" FontSize="24" Width="165" Command="{Binding Path=AddToLobbiesCommand, Source={StaticResource homeViewModel}}"/>
 
     </Grid>
 </Window>
