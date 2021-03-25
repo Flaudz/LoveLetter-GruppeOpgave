@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:LoveLetter_GruppeOpgave.ViewModel"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
         Title="HomeScreenViews" Height="450" Width="800">
 
     <Window.DataContext>
@@ -14,6 +14,11 @@
     <Grid>
         <ListView ItemsSource="{Binding Lobbies, UpdateSourceTrigger=Default, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center"
                   Height="300" Width='200' Margin="0,0,0,40">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding LobbyLeader.Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
         <Label Content="Lobby Info:" HorizontalAlignment="Left" Margin="558,47,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Label Content="Spiller 1:" HorizontalAlignment="Left" Margin="558,112,0,0" VerticalAlignment="Top"/>
