@@ -12,8 +12,8 @@
         <local:MainWindowViewModel x:Key="mainWindowViewModel"/>
     </Window.Resources>
     <Grid>
-        <Button Content = "Start Spil" 
-            Command = "{Binding simpleCommand, Source={StaticResource mainWindowViewModel}}" 
+        <Button Content = "Start Spil"
+            Command = "{Binding simpleCommand, Source={StaticResource mainWindowViewModel}}"
             CommandParameter = "startgame"
                 Height="20" Width="80"
                 VerticalAlignment="Bottom"
