@@ -6,5 +6,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 {
     class LoginRegisterViewmodel
     {
+        //asd
     }
 }
