@@ -71,15 +71,6 @@ namespace LoveLetter_GruppeOpgave.Model
             }
         }
 
-
-        //public Player(int id, string name, List<Card> onHand, Card lastThrownCard)
-        //{
-        //    this.id = id;
-        //    this.name = name;
-        //    this.onHand = onHand;
-        //    this.lastThrownCard = lastThrownCard;
-        //}
-
         public Player(int id, string name)
         {
             Id = id;
