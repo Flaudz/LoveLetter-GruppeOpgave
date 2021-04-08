@@ -7,8 +7,32 @@ namespace LoveLetter_GruppeOpgave.Model
 {
     public class DeckModel
     {
-        private ObservableCollection<Card> deck;
+        private ObservableCollection<CardModel> deck;
 
-        public ObservableCollection<Card> Deck { get => deck; set => deck = value; }
+        public ObservableCollection<CardModel> Deck { get => deck; set => deck = value; }
+
+        public Deck(ObservableCollection<CardModel> deck)
+        {
+            deck = Deck;
+        }
+
+        //jeg er ikke sikker på om dette virker, siden at det er lidt svært at teste.
+
+        public ObservableCollection<CardModel> DeckCreator()
+        {
+            ObservableCollection<CardModel> deck = new ObservableCollection<CardModel>();
+
+            for (int i = 0; i < 8; i++)
+            {
+                CardModel card = new CardModel();
+                card.SwitchCase(card);
+                    for (int o = 0; o < card.NumberOfCards; o++)
+                {
+                    deck.Add(card);
+                }
+            }
+
+            return deck;
+        }
     }
 }
