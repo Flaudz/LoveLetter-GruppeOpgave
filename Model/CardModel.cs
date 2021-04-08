@@ -30,44 +30,44 @@ namespace LoveLetter_GruppeOpgave.Model
 
         //jeg ved ikke om dette virker, siden det er lidt svært at teste det.
 
-        public CardModel SwitchCase(CardModel card)
+        public CardModel SwitchCase(CardModel card, int i)
         {
-            if (card.Id == 1)
+            if (i == 1)
             {
                 CardModel newCard = Guard(card);
                 return newCard;
             }
-            else if (card.Id == 2)
+            else if (i == 2)
             {
                 CardModel newCard = Priest(card);
                 return newCard;
             }
-            else if (card.Id == 3)
+            else if (i == 3)
             {
                 CardModel newCard = Baron(card);
                 return newCard;
             }
-            else if (card.Id == 4)
+            else if (i == 4)
             {
                 CardModel newCard = Handmaiden(card);
                 return newCard;
             }
-            else if (card.Id == 5)
+            else if (i == 5)
             {
                 CardModel newCard = Prince(card);
                 return newCard;
             }
-            else if (card.Id == 6)
+            else if (i == 6)
             {
                 CardModel newCard = King(card);
                 return newCard;
             }
-            else if (card.Id == 7)
+            else if (i == 7)
             {
                 CardModel newCard = Countess(card);
                 return newCard;
             }
-            else if (card.Id == 8)
+            else if (i == 8)
             {
                 CardModel newCard = Princess(card);
                 return newCard;

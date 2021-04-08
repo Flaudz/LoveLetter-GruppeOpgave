@@ -22,10 +22,10 @@ namespace LoveLetter_GruppeOpgave.Model
         {
             ObservableCollection<CardModel> deck = new ObservableCollection<CardModel>();
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 1; i < 9; i++)
             {
                 CardModel card = new CardModel();
-                card.SwitchCase(card);
+                card.SwitchCase(card,i);
                     for (int o = 0; o < card.NumberOfCards; o++)
                 {
                     deck.Add(card);
