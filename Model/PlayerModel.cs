@@ -11,8 +11,8 @@ namespace LoveLetter_GruppeOpgave.Model
     {
         private int id;
         private string name;
-        private ObservableCollection<Card> onHand;
-        private ObservableCollection<Card> cardsThrown;
+        private ObservableCollection<CardModel> onHand;
+        private ObservableCollection<CardModel> cardsThrown;
         private bool targeteble;
         private bool hasContessa;
 
@@ -34,7 +34,7 @@ namespace LoveLetter_GruppeOpgave.Model
                 OnPropertyChanged("Name");
             }
         }
-        public ObservableCollection<Card> OnHand {
+        public ObservableCollection<CardModel> OnHand {
             get { return onHand; }
             set
             {
@@ -43,7 +43,7 @@ namespace LoveLetter_GruppeOpgave.Model
                 OnPropertyChanged("OnHand");
             }
         }
-        public ObservableCollection<Card> CardsThrown {
+        public ObservableCollection<CardModel> CardsThrown {
             get { return cardsThrown; }
             set
             {
@@ -79,7 +79,7 @@ namespace LoveLetter_GruppeOpgave.Model
             HasContessa = false;
         }
 
-        public void DrawCard(Card card)
+        public void DrawCard(CardModel card)
         {
             OnHand.Add(card);
             if (!HasContessa)
@@ -95,7 +95,7 @@ namespace LoveLetter_GruppeOpgave.Model
         {
             if (HasContessa)
             {
-                foreach(Card card in OnHand)
+                foreach(CardModel card in OnHand)
                 {
                     int i = 2;
                     if(card.Id == 5 || card.Id == 6)
@@ -105,7 +105,6 @@ namespace LoveLetter_GruppeOpgave.Model
                     i--;
                 }
             }
-            OnHand[cardposition].Switchcase();
             CardsThrown.Add(OnHand[cardposition]);
             OnHand.RemoveAt(cardposition);
         }

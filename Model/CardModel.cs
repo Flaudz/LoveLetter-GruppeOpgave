@@ -19,18 +19,13 @@ namespace LoveLetter_GruppeOpgave.Model
         public string Description { get => description; set => description = value;}
         public string Picture { get => picture; set => picture = value;}
 
-        public Card(int id, string name, int numberOfCards, string description, string picture)
+        public CardModel()
         {
-            id = Id;
-            name = Name;
-            numberOfCards = NumberOfCards;
-            description = Description;
-            picture = Picture;
         }
 
         //jeg ved ikke om dette virker, siden det er lidt svært at teste det.
 
-        public CardModel SwitchCase(CardModel card, int i)
+        public CardModel Identify(CardModel card, int i)
         {
             if (i == 1)
             {
@@ -209,7 +204,7 @@ namespace LoveLetter_GruppeOpgave.Model
             return card;
         }
         public CardModel ErrorCard(CardModel card)
-            {
+        {
             int id = 0;
             string name = "Error";
             int numberOfCopies = 1;
@@ -223,6 +218,60 @@ namespace LoveLetter_GruppeOpgave.Model
             card.Picture = picture;
 
             return card;
+        }
+
+        public void Effect(Player player, int guardGuess , Player target, CardModel princeDraw)
+        {
+            switch (Id)
+            {
+                case 1:
+                    if (guardGuess == target.OnHand[0].Id)
+                    {
+                        target.OnPlay(0);
+                        target.Targeteble = false;
+                    }
+                    break;
+                case 3:
+                    if (player.OnHand[0].Id > target.OnHand[0].Id)
+                    {
+                        target.OnPlay(0);
+                        target.Targeteble = false;
+                    }
+                    else if (player.OnHand[0].Id < target.OnHand[0].Id)
+                    {
+                        player.OnPlay(0);
+                        player.Targeteble = false;
+                    }
+                    break;
+                case 4:
+                    player.Targeteble = false;
+                    break;
+                case 5:
+                    target.OnPlay(0);
+                    if(target.CardsThrown[target.CardsThrown.Count-1].Id == 8)
+                    {
+                        target.Targeteble = false;
+                    }
+                    else
+                    {
+                        target.DrawCard(princeDraw);
+                    }
+                    break;
+                case 6:
+                    CardModel value = player.OnHand[0];
+                    player.OnHand[0] = target.OnHand[0];
+                    target.OnHand[0] = value;
+                    break;
+                case 8:
+                    player.Targeteble = false;
+                    if(player.OnHand.Count > 0)
+                    {
+                        player.OnPlay(0);
+                    }
+                    break;
+                default:
+                    break;
             }
+        }
     }
 }

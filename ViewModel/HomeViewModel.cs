@@ -9,6 +9,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 {
     public class HomeViewModel
     {
+        private DeckModel deck = new DeckModel();
         public AddToLobbiesCommand AddToLobbiesCommand { get; set; }
         // Constructor tror jeg
         public ObservableCollection<Lobby> Lobbies
@@ -30,6 +31,8 @@ namespace LoveLetter_GruppeOpgave.ViewModel
             lobbies.Add(lobby);
 
             Lobbies = lobbies;
+            deck.DeckCreator();
+            deck.ShuffleDeck();
         }
 
         public void MakeNewLobby()
