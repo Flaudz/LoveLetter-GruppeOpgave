@@ -15,6 +15,8 @@ namespace LoveLetter_GruppeOpgave.Model
         private ObservableCollection<CardModel> cardsThrown;
         private bool targeteble;
         private bool hasContessa;
+        private int seat;
+        private int points;
 
         public int Id {
             get { return id; }
@@ -68,6 +70,24 @@ namespace LoveLetter_GruppeOpgave.Model
                 if (hasContessa == value) return;
                 hasContessa = value;
                 OnPropertyChanged("HasContessa");
+            }
+        }
+        public int Seat {
+            get { return seat; }
+            set
+            {
+                if (seat == value) return;
+                seat = value;
+                OnPropertyChanged("Seat");
+            }
+        }
+        public int Points {
+            get { return points; }
+            set
+            {
+                if (points == value) return;
+                points = value;
+                OnPropertyChanged("Points");
             }
         }
 

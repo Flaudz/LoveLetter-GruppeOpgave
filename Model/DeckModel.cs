@@ -1,16 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace LoveLetter_GruppeOpgave.Model
 {
-    public class DeckModel
+    public class DeckModel : INotifyPropertyChanged
     {
         private ObservableCollection<CardModel> deck;
+        private CardModel hiddenCard;
 
-        public ObservableCollection<CardModel> Deck { get => deck; set => deck = value; }
+        public ObservableCollection<CardModel> Deck
+        {
+            get { return deck; }
+            set
+            {
+                if (deck == value) return;
+                deck = value;
+                OnPropertyChanged("Deck");
+            }
+        }
+        public CardModel HiddenCard
+        {
+            get { return hiddenCard; }
+            set
+            {
+                if (hiddenCard == value) return;
+                hiddenCard = value;
+                OnPropertyChanged("HiddenCard");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName = null)
+        {
+            var handler = this.PropertyChanged;
+
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         public DeckModel()
         {
