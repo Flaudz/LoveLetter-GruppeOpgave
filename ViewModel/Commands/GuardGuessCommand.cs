@@ -6,10 +6,10 @@ using LoveLetter_GruppeOpgave.Model;
 
 namespace LoveLetter_GruppeOpgave.ViewModel.Commands
 {
-    public class CardSelectCommand : ICommand
+    public class GuardGuessCommand : ICommand
     {
-        
-        public CardSelectCommand()
+
+        public GuardGuessCommand()
         {
         }
 
@@ -24,8 +24,8 @@ namespace LoveLetter_GruppeOpgave.ViewModel.Commands
         public void Execute(object parameter)
         {
             GameViewModel gameViewModel = (GameViewModel)App.Current.Resources["sharedGameViewModel"];
-            CardModel card = (CardModel)parameter;
-            gameViewModel.CardSelect(card);
+            int guess = (int)parameter;
+            gameViewModel.CardPlay(guess);
         }
     }
 }

@@ -4,22 +4,33 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using LoveLetter_GruppeOpgave.Model;
+using LoveLetter_GruppeOpgave.ViewModel.Commands;
 
 namespace LoveLetter_GruppeOpgave.ViewModel { 
     public class GameViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Player> players;
         private Player localPlayer = new Player(1,null);
-        private int localPlayerSeat;
         private DeckModel deck = new DeckModel();
         private bool localTurn = false;
         private bool targeting = false;
         private string guardPannelState = "Hidden";
         private int playerTurn = 1;
+        private CardModel card = new CardModel();
+        private Player targetPlayer;
+        private ObservableCollection<Player> opponents;
+
+
+        public CardSelectCommand cardSelectCommand { get; set; }
+        public TargetPlayerCommand targetPlayerCommand { get; set; }
+        public GuardGuessCommand guardGuessCommand { get; set; }
 
         public GameViewModel()
         {
-            
+            card.Identify(card, 5);
+            cardSelectCommand = new CardSelectCommand();
+            targetPlayerCommand = new TargetPlayerCommand();
+            guardGuessCommand = new GuardGuessCommand();
         }
 
         public ObservableCollection<Player> Players
@@ -30,16 +41,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                 if (players == value) return;
                 players = value;
                 OnPropertyChanged("Players");
-            }
-        }
-        public int LocalPlayerSeat
-        {
-            get { return localPlayerSeat; }
-            set
-            {
-                if (localPlayerSeat == value) return;
-                localPlayerSeat = value;
-                OnPropertyChanged("LocalPlayerSeat");
             }
         }
         public DeckModel Deck
@@ -103,6 +104,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             }
         }
 
+        public CardModel Card { get => card; set => card = value; }
+        public Player TargetPlayer { get => targetPlayer; set => targetPlayer = value; }
+        public ObservableCollection<Player> Opponents { get => opponents; set => opponents = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
@@ -114,15 +119,15 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             }
         }
 
-        public void SetPlayers(ObservableCollection<Player> players)
+        public void GetOpponents()
         {
-            Players = players;
-            Players.Remove(LocalPlayer);
+            Opponents = Players;
+            Opponents.Remove(LocalPlayer);
         }
 
         public void GameStart()
         {
-            if(localPlayerSeat == 1)
+            if(localPlayer.Seat == 1)
             {
                 Deck.DeckCreator();
                 Deck.ShuffleDeck();
@@ -156,10 +161,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                     player.DrawCard(Deck.Deck[0]);
                     Deck.Deck.RemoveAt(0);
                 }
-            }
-            if(PlayerTurn == LocalPlayerSeat)
-            {
-                LocalTurn = true;
+                if(player == LocalPlayer)
+                {
+                    LocalTurn = true;
+                }
             }
         }
 
@@ -223,17 +228,39 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             if (!tie)
             {
                 winner.Points++;
-                if (winner.Points == 7 - Players.Count)
-                {
-                    //EndGame
-                }
             }
         }
 
-        public void CardSelect()
+        public void CardSelect(CardModel card)
         {
             Targeting = true;
+            Card = card;
+        }
 
+        public void TargetSelect(Player target)
+        {
+            TargetPlayer = target;
+            if(Card.Id == 1)
+            {
+                GuardPannelState = "Visible";
+            }
+            else
+            {
+                CardPlay(0);
+            }
+        }
+
+        public void CardPlay(int guardGuess)
+        {
+            foreach (Player player in Players)
+            {
+                if (player.Seat == PlayerTurn)
+                {
+                    card.Effect(player, guardGuess, TargetPlayer, Deck.Deck[0]);
+                    player.OnPlay(player.OnHand.IndexOf(Card));
+                    TurnEnd();
+                }
+            }
         }
     }
 }
