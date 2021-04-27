@@ -227,19 +227,19 @@ namespace LoveLetter_GruppeOpgave.Model
                 case 1:
                     if (guardGuess == target.OnHand[0].Id)
                     {
-                        target.OnPlay(0);
+                        target.OnPlay(target.OnHand[0]);
                         target.Targeteble = false;
                     }
                     break;
                 case 3:
                     if (player.OnHand[0].Id > target.OnHand[0].Id)
                     {
-                        target.OnPlay(0);
+                        target.OnPlay(target.OnHand[0]);
                         target.Targeteble = false;
                     }
                     else if (player.OnHand[0].Id < target.OnHand[0].Id)
                     {
-                        player.OnPlay(0);
+                        player.OnPlay(player.OnHand[0]);
                         player.Targeteble = false;
                     }
                     break;
@@ -247,26 +247,35 @@ namespace LoveLetter_GruppeOpgave.Model
                     player.Targeteble = false;
                     break;
                 case 5:
-                    target.OnPlay(0);
-                    if(target.CardsThrown[target.CardsThrown.Count-1].Id == 8)
+                    if (!player.HasContessa)
                     {
-                        target.Targeteble = false;
-                    }
-                    else
-                    {
-                        target.DrawCard(princeDraw);
+                        target.OnPlay(target.OnHand[0]);
+                        if (target.CardsThrown[target.CardsThrown.Count - 1].Id == 8)
+                        {
+                            target.Targeteble = false;
+                        }
+                        else
+                        {
+                            target.DrawCard(princeDraw);
+                        }
                     }
                     break;
                 case 6:
-                    CardModel value = player.OnHand[0];
-                    player.OnHand[0] = target.OnHand[0];
-                    target.OnHand[0] = value;
+                    if (!player.HasContessa)
+                    {
+                        CardModel value = player.OnHand[0];
+                        player.OnHand[0] = target.OnHand[0];
+                        target.OnHand[0] = value;
+                    }
+                    break;
+                case 7:
+                    player.HasContessa = false;
                     break;
                 case 8:
                     player.Targeteble = false;
                     if(player.OnHand.Count > 0)
                     {
-                        player.OnPlay(0);
+                        player.OnPlay(target.OnHand[0]);
                     }
                     break;
                 default:

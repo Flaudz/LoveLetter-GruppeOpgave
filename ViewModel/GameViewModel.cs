@@ -150,6 +150,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                     }
                 }
             }
+            TurnStart();
         }
 
         public void TurnStart()
@@ -166,6 +167,24 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                     LocalTurn = true;
                 }
             }
+            if (!localTurn)
+            {
+                int dBPlayerTurn;
+                int guardGuess = 0;
+                do
+                {
+                    dBPlayerTurn = 0;
+                    //get playerTurn from DB
+                    //get guardguess from DB
+                    //get card from DB
+                    //get target from DB
+                }
+                while (dBPlayerTurn == PlayerTurn || dBPlayerTurn == 0);
+                if (dBPlayerTurn != PlayerTurn)
+                {
+                    CardPlay(guardGuess);
+                }
+            }
         }
 
         public void TurnEnd()
@@ -176,6 +195,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             if(PlayerTurn == 5)
             {
                 PlayerTurn = 1;
+            }
+            if(LocalPlayer.Seat == PlayerTurn)
+            {
+                //send PlayerTurn to DB
             }
             if(Deck.Deck.Count == 0)
             {
@@ -235,6 +258,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
         {
             Targeting = true;
             Card = card;
+            //send Card to DB
         }
 
         public void TargetSelect(Player target)
@@ -248,16 +272,18 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             {
                 CardPlay(0);
             }
+            //send Target to DB
         }
 
         public void CardPlay(int guardGuess)
         {
+            //send guardGuess to DB
             foreach (Player player in Players)
             {
                 if (player.Seat == PlayerTurn)
                 {
                     card.Effect(player, guardGuess, TargetPlayer, Deck.Deck[0]);
-                    player.OnPlay(player.OnHand.IndexOf(Card));
+                    player.OnPlay(Card);
                     TurnEnd();
                 }
             }
