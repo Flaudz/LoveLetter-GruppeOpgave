@@ -19,6 +19,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
         private CardModel card = new CardModel();
         private Player targetPlayer;
         private ObservableCollection<Player> opponents;
+        private int turnCount;
 
 
         public CardSelectCommand cardSelectCommand { get; set; }
@@ -107,6 +108,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
         public CardModel Card { get => card; set => card = value; }
         public Player TargetPlayer { get => targetPlayer; set => targetPlayer = value; }
         public ObservableCollection<Player> Opponents { get => opponents; set => opponents = value; }
+        public int TurnCount { get => turnCount; set => turnCount = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
@@ -127,8 +129,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
 
         public void GameStart()
         {
+            TurnCount = 0;
             if(localPlayer.Seat == 1)
             {
+                //send TurnCount
                 Deck.DeckCreator();
                 Deck.ShuffleDeck();
                 //API send deck
@@ -174,10 +178,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                 do
                 {
                     dBPlayerTurn = 0;
-                    //get playerTurn from DB
+                    //get TurnCount from DB
                     //get guardguess from DB
-                    //get card from DB
-                    //get target from DB
+                    //get card.id from DB
+                    //get target.name from DB
                 }
                 while (dBPlayerTurn == PlayerTurn || dBPlayerTurn == 0);
                 if (dBPlayerTurn != PlayerTurn)
@@ -189,18 +193,40 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
 
         public void TurnEnd()
         {
+            TurnCount++;
+            //send TurnCount to DB
+            int deadPlayerCount = 0;
+            foreach (Player player in Players)
+            {
+                if(player.OnHand.Count == 0)
+                {
+                    deadPlayerCount++;
+                }
+            }
             bool gameover = false;
             LocalTurn = false;
-            PlayerTurn++;
-            if(PlayerTurn == 5)
+            bool playerDead = false;
+            do
             {
-                PlayerTurn = 1;
-            }
-            if(LocalPlayer.Seat == PlayerTurn)
-            {
-                //send PlayerTurn to DB
-            }
-            if(Deck.Deck.Count == 0)
+                PlayerTurn++;
+                if (PlayerTurn == 5)
+                {
+                    PlayerTurn = 1;
+                }
+                foreach (Player player in Players)
+                {
+                    if(player.Seat == PlayerTurn && player.OnHand.Count > 0)
+                    {
+                        playerDead = false;
+                        break;
+                    }
+                    else
+                    {
+                        playerDead = true;
+                    }
+                }
+            } while (playerDead);
+            if(Deck.Deck.Count == 0 || deadPlayerCount == Players.Count-1)
             {
                 EndRound();
                 foreach(Player player in Players)
@@ -228,22 +254,25 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             bool tie = false;
             foreach(Player player in Players)
             {
-                if(winner != null && player.OnHand.Count != 0)
+                if(winner == null && player.OnHand.Count != 0)
                 {
                     winner = player;
                 }
-                if(player.OnHand.Count != 0)
+                else
                 {
-                    if(player.OnHand[0].Id >= winner.OnHand[0].Id)
+                    if(player.OnHand.Count != 0)
                     {
-                        if(player.OnHand[0].Id == winner.OnHand[0].Id)
+                        if(player.OnHand[0].Id >= winner.OnHand[0].Id)
                         {
-                            tie = true;
-                        }
-                        else
-                        {
-                            tie = false;
-                            winner = player;
+                            if(player.OnHand[0].Id == winner.OnHand[0].Id)
+                            {
+                                tie = true;
+                            }
+                            else
+                            {
+                                tie = false;
+                                winner = player;
+                            }
                         }
                     }
                 }
