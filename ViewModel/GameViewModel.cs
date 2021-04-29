@@ -20,6 +20,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
         private Player targetPlayer;
         private ObservableCollection<Player> opponents;
         private int turnCount;
+        private int roundCount = 0;
 
 
         public CardSelectCommand cardSelectCommand { get; set; }
@@ -109,6 +110,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
         public Player TargetPlayer { get => targetPlayer; set => targetPlayer = value; }
         public ObservableCollection<Player> Opponents { get => opponents; set => opponents = value; }
         public int TurnCount { get => turnCount; set => turnCount = value; }
+        public int RoundCount { get => roundCount; set => roundCount = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
@@ -136,10 +138,18 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                 Deck.DeckCreator();
                 Deck.ShuffleDeck();
                 //API send deck
+                RoundCount++;
             }
             else
             {
-                //Deck.Deck = API get deck
+                int dbRoundCount;
+                do
+                {
+                    dbRoundCount = 0;
+                    //get RoundCount from DB
+                    //get deck from DB
+
+                } while (RoundCount == dbRoundCount);
             }
             Deck.HiddenCard = Deck.Deck[0];
             Deck.Deck.RemoveAt(0);
