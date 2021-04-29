@@ -10,7 +10,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
     public class GameViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Player> players;
-        private Player localPlayer = new Player(1,null);
+        private Player localPlayer = new Player(1,"");
         private DeckModel deck = new DeckModel();
         private bool localTurn = false;
         private bool targeting = false;

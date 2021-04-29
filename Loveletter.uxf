@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>13</zoom_level>
+  <zoom_level>10</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>780</x>
-      <y>1664</y>
-      <w>273</w>
-      <h>130</h>
+      <x>600</x>
+      <y>1280</y>
+      <w>210</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Card&gt;&gt;
 --
@@ -21,25 +21,26 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>1677</y>
-      <w>273</w>
-      <h>91</h>
+      <x>900</x>
+      <y>1290</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Deck&gt;&gt;
 --
 +Deck: List&lt;Card&gt;
 --
-</panel_attributes>
++DeckCreator
++ShufleDeck</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
-      <y>1716</y>
-      <w>156</w>
-      <h>39</h>
+      <x>800</x>
+      <y>1320</y>
+      <w>120</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>100.0;10.0;10.0;10.0</additional_attributes>
@@ -47,10 +48,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>325</x>
-      <y>1664</y>
-      <w>273</w>
-      <h>143</h>
+      <x>250</x>
+      <y>1280</y>
+      <w>210</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Player&gt;&gt;
 --
@@ -65,10 +66,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>858</x>
+      <x>660</x>
       <y>0</y>
-      <w>273</w>
-      <h>104</h>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;DataBase&gt;&gt;
 --
@@ -82,10 +83,10 @@ Users: table
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>312</x>
-      <y>182</y>
-      <w>273</w>
-      <h>104</h>
+      <x>240</x>
+      <y>140</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Users&gt;&gt;
 --
@@ -96,10 +97,10 @@ Users: table
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>429</x>
-      <y>52</y>
-      <w>455</w>
-      <h>156</h>
+      <x>330</x>
+      <y>40</y>
+      <w>350</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0;330.0;10.0</additional_attributes>
@@ -107,10 +108,10 @@ Users: table
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>858</x>
-      <y>182</y>
-      <w>273</w>
-      <h>104</h>
+      <x>660</x>
+      <y>140</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Characters&gt;&gt;
 --
@@ -122,10 +123,10 @@ Users: table
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>975</x>
-      <y>91</y>
-      <w>39</w>
-      <h>117</h>
+      <x>750</x>
+      <y>70</y>
+      <w>30</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
@@ -133,10 +134,10 @@ Users: table
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1365</x>
-      <y>195</y>
-      <w>273</w>
-      <h>78</h>
+      <x>1050</x>
+      <y>150</y>
+      <w>210</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;MemoryCard&gt;&gt;
 --
@@ -147,10 +148,10 @@ Users: table
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1118</x>
-      <y>52</y>
-      <w>403</w>
-      <h>169</h>
+      <x>860</x>
+      <y>40</y>
+      <w>310</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>290.0;110.0;290.0;10.0;10.0;10.0</additional_attributes>
@@ -158,10 +159,10 @@ Users: table
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>585</x>
-      <y>1729</y>
-      <w>221</w>
-      <h>39</h>
+      <x>450</x>
+      <y>1330</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
@@ -170,9 +171,9 @@ Users: table
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>1729</y>
-      <w>130</w>
-      <h>39</h>
+      <y>1330</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Model</panel_attributes>
     <additional_attributes/>
@@ -181,9 +182,9 @@ Users: table
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>988</y>
-      <w>130</w>
-      <h>39</h>
+      <y>760</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>Views
 </panel_attributes>
@@ -193,9 +194,9 @@ Users: table
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>1365</y>
-      <w>130</w>
-      <h>39</h>
+      <y>1050</y>
+      <w>100</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>ViewModel</panel_attributes>
     <additional_attributes/>
@@ -203,10 +204,10 @@ Users: table
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>312</x>
-      <y>962</y>
-      <w>273</w>
-      <h>117</h>
+      <x>240</x>
+      <y>740</y>
+      <w>210</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Login&gt;&gt;
 --
@@ -219,10 +220,10 @@ RegisterBtn: Button</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1417</x>
-      <y>962</y>
-      <w>273</w>
-      <h>130</h>
+      <x>1090</x>
+      <y>740</y>
+      <w>210</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;HomeScreen&gt;&gt;
 --
@@ -235,51 +236,35 @@ JoinLobby: Button</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1807</x>
-      <y>975</y>
-      <w>273</w>
-      <h>78</h>
+      <x>1390</x>
+      <y>750</y>
+      <w>210</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;LobbyScreen&gt;&gt;
 --
-Players: TextBlock
-GoBtn: Button</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1677</x>
-      <y>1326</y>
-      <w>273</w>
-      <h>78</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;LobbyViewModel&gt;&gt;
---
-+joinLobby(Lobby lobby)
-+leaveLobby()
-
-</panel_attributes>
+Indsæt Navn: TextBlock
+Start Spil: Button</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1807</x>
-      <y>1040</y>
-      <w>169</w>
-      <h>312</h>
+      <x>1250</x>
+      <y>800</y>
+      <w>270</w>
+      <h>290</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>110.0;10.0;10.0;220.0</additional_attributes>
+    <additional_attributes>250.0;10.0;10.0;270.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>286</x>
-      <y>1326</y>
-      <w>273</w>
-      <h>104</h>
+      <x>220</x>
+      <y>1020</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;LoginRegisterViewModel&gt;&gt;
 --
@@ -290,10 +275,10 @@ GoBtn: Button</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>416</x>
-      <y>1066</y>
-      <w>39</w>
-      <h>286</h>
+      <x>320</x>
+      <y>820</y>
+      <w>30</w>
+      <h>220</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
@@ -301,10 +286,10 @@ GoBtn: Button</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>624</x>
-      <y>1326</y>
-      <w>702</w>
-      <h>104</h>
+      <x>480</x>
+      <y>1020</y>
+      <w>540</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>&lt;&lt;GameViewModel&gt;&gt;
 --
@@ -312,16 +297,23 @@ GoBtn: Button</panel_attributes>
 +Deck: Deck
 --
 +attack(int player1Id, int pickedPlayerId, Card player1Card, Card pickedPlayerCard)
-+Kill(int player)</panel_attributes>
++Kill(int player)
++getOpponents
++GameStart
++TurnStart
++TurnEnd
++EndRound
++TargetSelect
++CardPlay</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>923</x>
-      <y>1053</y>
-      <w>39</w>
-      <h>299</h>
+      <x>710</x>
+      <y>810</y>
+      <w>30</w>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
@@ -329,10 +321,10 @@ GoBtn: Button</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>806</x>
-      <y>962</y>
-      <w>273</w>
-      <h>104</h>
+      <x>620</x>
+      <y>740</y>
+      <w>210</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>&lt;&lt;GameScreen&gt;&gt;
 --
@@ -344,25 +336,27 @@ GoBtn: Button</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1365</x>
-      <y>1326</y>
-      <w>273</w>
-      <h>104</h>
+      <x>1050</x>
+      <y>1020</y>
+      <w>210</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;HomeViewModel&gt;&gt;
 --
 Lobbies: ObservabelCollection
 --
--getLobbies()</panel_attributes>
+-getLobbies()
++JoinLobby
++MakeNewLobby</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1521</x>
-      <y>1079</y>
-      <w>39</w>
-      <h>273</h>
+      <x>1170</x>
+      <y>830</y>
+      <w>30</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
@@ -370,10 +364,10 @@ Lobbies: ObservabelCollection
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1495</x>
-      <y>1677</y>
-      <w>273</w>
-      <h>130</h>
+      <x>1150</x>
+      <y>1290</y>
+      <w>210</w>
+      <h>100</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Lobby&gt;&gt;
 --
@@ -387,10 +381,10 @@ Lobbies: ObservabelCollection
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>442</x>
-      <y>1794</y>
-      <w>1209</w>
-      <h>247</h>
+      <x>340</x>
+      <y>1380</y>
+      <w>930</w>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;170.0;910.0;170.0;910.0;10.0</additional_attributes>
@@ -398,54 +392,54 @@ Lobbies: ObservabelCollection
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>442</x>
-      <y>1417</y>
-      <w>520</w>
-      <h>273</h>
+      <x>340</x>
+      <y>1220</y>
+      <w>400</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;190.0;380.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;380.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>923</x>
-      <y>1417</y>
-      <w>416</w>
-      <h>286</h>
+      <x>710</x>
+      <y>1220</y>
+      <w>320</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>300.0;200.0;10.0;10.0</additional_attributes>
+    <additional_attributes>300.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1638</x>
-      <y>1391</y>
-      <w>208</w>
-      <h>312</h>
+      <x>1250</x>
+      <y>1060</y>
+      <w>40</w>
+      <h>250</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;220.0;140.0;10.0</additional_attributes>
+    <additional_attributes>20.0;230.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1508</x>
-      <y>1417</y>
-      <w>130</w>
-      <h>286</h>
+      <x>1160</x>
+      <y>1110</y>
+      <w>100</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>80.0;200.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>403</x>
-      <y>1417</y>
-      <w>78</w>
-      <h>273</h>
+      <x>310</x>
+      <y>1090</y>
+      <w>60</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>40.0;190.0;10.0;10.0</additional_attributes>
