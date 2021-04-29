@@ -11,7 +11,10 @@
     <Window.Resources>
         <local:MainWindowViewModel x:Key="mainWindowViewModel"/>
     </Window.Resources>
-    <Grid>    
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
         <!--Knappen start spil, som er binded til simpleCommand som har en metode der åbner et nyt vindue-->
         <Button Content = "Start Spil" 
             Command = "{Binding simpleCommand, Source={StaticResource mainWindowViewModel}}" 
@@ -19,5 +22,7 @@
                 Height="20" Width="80"
                 VerticalAlignment="Bottom"
                 Margin="0,0,0,50"/>
+        <TextBox Text = "{Binding GivenName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Source={StaticResource mainWindowViewModel}}"  x:Name="PlayerNameTbx" HorizontalAlignment="Center" Margin="0,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="PlayerNameLbl" Content="Indtast navn" HorizontalAlignment="Left" Margin="360,285,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

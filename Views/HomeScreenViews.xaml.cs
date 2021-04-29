@@ -10,6 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LoveLetter_GruppeOpgave;
+using LoveLetter_GruppeOpgave.ViewModel;
 
 namespace LoveLetter_GruppeOpgave.Views
 {
@@ -21,7 +22,11 @@ namespace LoveLetter_GruppeOpgave.Views
         public HomeScreenViews()
         {
             InitializeComponent();
+            //this.Title = GameViewModel.LocalPlayer.Name;
         }
-        
+        //public GameViewModel GameViewModel = (GameViewModel)App.Current.Resources["sharedGameViewModel"];
+
     }
+        
+    
 }

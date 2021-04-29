@@ -24,5 +24,10 @@ namespace LoveLetter_GruppeOpgave
         {
             InitializeComponent();
         }
+
+        private void PlayerNameTbx_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+
+        }
     }
 }

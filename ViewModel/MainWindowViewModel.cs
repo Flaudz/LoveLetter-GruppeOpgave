@@ -11,7 +11,10 @@ namespace LoveLetter_GruppeOpgave.ViewModel
 {
     public class MainWindowViewModel : Window
     {
+        private string givenName;
         public SimpleCommand simpleCommand { get; set; }  //En del af binding til knappen. Fortsætter i SimpleCommand.cs
+        public string GivenName { get => givenName; set => givenName = value; }
+
         public MainWindowViewModel()
         {
             this.simpleCommand = new SimpleCommand(this);
@@ -21,8 +24,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel
         {
             HomeScreenViews homeScreenViews = new HomeScreenViews();
             homeScreenViews.Show();
-            /*MainWindow mainWindow = new MainWindow();
-            mainWindow.Close();*/
+            
 
         }
     }
