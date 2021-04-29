@@ -111,22 +111,21 @@ namespace LoveLetter_GruppeOpgave.Model
             }
         }
 
-        public void OnPlay(int cardposition)
+        public void OnPlay(CardModel selectedCard)
         {
             if (HasContessa)
             {
                 foreach(CardModel card in OnHand)
                 {
-                    int i = 2;
                     if(card.Id == 5 || card.Id == 6)
                     {
-                        cardposition = i - 1;
+                        selectedCard.Identify(selectedCard, 7);
+                        HasContessa = false;
                     }
-                    i--;
                 }
             }
-            CardsThrown.Add(OnHand[cardposition]);
-            OnHand.RemoveAt(cardposition);
+            CardsThrown.Add(selectedCard);
+            OnHand.Remove(selectedCard);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

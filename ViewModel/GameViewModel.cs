@@ -4,22 +4,34 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using LoveLetter_GruppeOpgave.Model;
+using LoveLetter_GruppeOpgave.ViewModel.Commands;
 
 namespace LoveLetter_GruppeOpgave.ViewModel { 
     public class GameViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<Player> players;
-        private Player localPlayer = new Player(1,"");
-        private int localPlayerSeat;
+        private Player localPlayer = new Player(1,null);
         private DeckModel deck = new DeckModel();
         private bool localTurn = false;
         private bool targeting = false;
         private string guardPannelState = "Hidden";
         private int playerTurn = 1;
+        private CardModel card = new CardModel();
+        private Player targetPlayer;
+        private ObservableCollection<Player> opponents;
+        private int turnCount;
+
+
+        public CardSelectCommand cardSelectCommand { get; set; }
+        public TargetPlayerCommand targetPlayerCommand { get; set; }
+        public GuardGuessCommand guardGuessCommand { get; set; }
 
         public GameViewModel()
         {
-            
+            card.Identify(card, 5);
+            cardSelectCommand = new CardSelectCommand();
+            targetPlayerCommand = new TargetPlayerCommand();
+            guardGuessCommand = new GuardGuessCommand();
         }
 
         public ObservableCollection<Player> Players
@@ -30,16 +42,6 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                 if (players == value) return;
                 players = value;
                 OnPropertyChanged("Players");
-            }
-        }
-        public int LocalPlayerSeat
-        {
-            get { return localPlayerSeat; }
-            set
-            {
-                if (localPlayerSeat == value) return;
-                localPlayerSeat = value;
-                OnPropertyChanged("LocalPlayerSeat");
             }
         }
         public DeckModel Deck
@@ -103,6 +105,11 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             }
         }
 
+        public CardModel Card { get => card; set => card = value; }
+        public Player TargetPlayer { get => targetPlayer; set => targetPlayer = value; }
+        public ObservableCollection<Player> Opponents { get => opponents; set => opponents = value; }
+        public int TurnCount { get => turnCount; set => turnCount = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName = null)
         {
@@ -114,16 +121,18 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             }
         }
 
-        public void SetPlayers(ObservableCollection<Player> players)
+        public void GetOpponents()
         {
-            Players = players;
-            Players.Remove(LocalPlayer);
+            Opponents = Players;
+            Opponents.Remove(LocalPlayer);
         }
 
         public void GameStart()
         {
-            if(localPlayerSeat == 1)
+            TurnCount = 0;
+            if(localPlayer.Seat == 1)
             {
+                //send TurnCount
                 Deck.DeckCreator();
                 Deck.ShuffleDeck();
                 //API send deck
@@ -145,6 +154,7 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                     }
                 }
             }
+            TurnStart();
         }
 
         public void TurnStart()
@@ -156,23 +166,67 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
                     player.DrawCard(Deck.Deck[0]);
                     Deck.Deck.RemoveAt(0);
                 }
+                if(player == LocalPlayer)
+                {
+                    LocalTurn = true;
+                }
             }
-            if(PlayerTurn == LocalPlayerSeat)
+            if (!localTurn)
             {
-                LocalTurn = true;
+                int dBPlayerTurn;
+                int guardGuess = 0;
+                do
+                {
+                    dBPlayerTurn = 0;
+                    //get TurnCount from DB
+                    //get guardguess from DB
+                    //get card.id from DB
+                    //get target.name from DB
+                }
+                while (dBPlayerTurn == PlayerTurn || dBPlayerTurn == 0);
+                if (dBPlayerTurn != PlayerTurn)
+                {
+                    CardPlay(guardGuess);
+                }
             }
         }
 
         public void TurnEnd()
         {
+            TurnCount++;
+            //send TurnCount to DB
+            int deadPlayerCount = 0;
+            foreach (Player player in Players)
+            {
+                if(player.OnHand.Count == 0)
+                {
+                    deadPlayerCount++;
+                }
+            }
             bool gameover = false;
             LocalTurn = false;
-            PlayerTurn++;
-            if(PlayerTurn == 5)
+            bool playerDead = false;
+            do
             {
-                PlayerTurn = 1;
-            }
-            if(Deck.Deck.Count == 0)
+                PlayerTurn++;
+                if (PlayerTurn == 5)
+                {
+                    PlayerTurn = 1;
+                }
+                foreach (Player player in Players)
+                {
+                    if(player.Seat == PlayerTurn && player.OnHand.Count > 0)
+                    {
+                        playerDead = false;
+                        break;
+                    }
+                    else
+                    {
+                        playerDead = true;
+                    }
+                }
+            } while (playerDead);
+            if(Deck.Deck.Count == 0 || deadPlayerCount == Players.Count-1)
             {
                 EndRound();
                 foreach(Player player in Players)
@@ -200,22 +254,25 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             bool tie = false;
             foreach(Player player in Players)
             {
-                if(winner != null && player.OnHand.Count != 0)
+                if(winner == null && player.OnHand.Count != 0)
                 {
                     winner = player;
                 }
-                if(player.OnHand.Count != 0)
+                else
                 {
-                    if(player.OnHand[0].Id >= winner.OnHand[0].Id)
+                    if(player.OnHand.Count != 0)
                     {
-                        if(player.OnHand[0].Id == winner.OnHand[0].Id)
+                        if(player.OnHand[0].Id >= winner.OnHand[0].Id)
                         {
-                            tie = true;
-                        }
-                        else
-                        {
-                            tie = false;
-                            winner = player;
+                            if(player.OnHand[0].Id == winner.OnHand[0].Id)
+                            {
+                                tie = true;
+                            }
+                            else
+                            {
+                                tie = false;
+                                winner = player;
+                            }
                         }
                     }
                 }
@@ -223,17 +280,42 @@ namespace LoveLetter_GruppeOpgave.ViewModel {
             if (!tie)
             {
                 winner.Points++;
-                if (winner.Points == 7 - Players.Count)
-                {
-                    //EndGame
-                }
             }
         }
 
-        public void CardSelect()
+        public void CardSelect(CardModel card)
         {
             Targeting = true;
+            Card = card;
+            //send Card to DB
+        }
 
+        public void TargetSelect(Player target)
+        {
+            TargetPlayer = target;
+            if(Card.Id == 1)
+            {
+                GuardPannelState = "Visible";
+            }
+            else
+            {
+                CardPlay(0);
+            }
+            //send Target to DB
+        }
+
+        public void CardPlay(int guardGuess)
+        {
+            //send guardGuess to DB
+            foreach (Player player in Players)
+            {
+                if (player.Seat == PlayerTurn)
+                {
+                    card.Effect(player, guardGuess, TargetPlayer, Deck.Deck[0]);
+                    player.OnPlay(Card);
+                    TurnEnd();
+                }
+            }
         }
     }
 }
